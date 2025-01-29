@@ -1,9 +1,17 @@
 # NextJS SaaS starter kit
-- drizzle-orm
-- neon db
-- shadcn
+- biome ✅
+- shadcn ✅
+- drizzle-orm ✅
+- neon db ✅
 - clerk
-- stripe
 - react-email
 - resend
-- biome
+- stripe
+
+## TODO
+- pricing page (auth & stripe)
+
+## Other Tools
+- react-hook-form
+- zod
+- drizzle-zod
