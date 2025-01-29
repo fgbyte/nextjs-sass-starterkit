@@ -3,9 +3,9 @@
 - shadcn ✅
 - drizzle-orm ✅
 - neon db ✅
-- clerk
-- react-email
-- resend
+- clerk ✅
+- react-email ✅
+- resend ✅
 - stripe
 
 ## TODO

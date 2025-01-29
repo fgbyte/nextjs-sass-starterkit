@@ -1,10 +1,11 @@
 // Default test schema for the database
 
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
-export const usersTable = pgTable("users", {
-	id: integer().primaryKey().generatedAlwaysAsIdentity(),
-	name: varchar({ length: 255 }).notNull(),
-	age: integer().notNull(),
-	email: varchar({ length: 255 }).notNull().unique(),
+export const Users = pgTable("users", {
+	id: serial("id").primaryKey(),
+	stripeCustomerId: text("stripe_customer_id").unique(),
+	email: text("email").notNull().unique(),
+	name: text("name"),
+	createAt: timestamp("created_at").defaultNow(),
 });
