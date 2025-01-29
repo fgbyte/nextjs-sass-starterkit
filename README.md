@@ -9,6 +9,7 @@
 - stripe
 
 ## TODO
+- landing page (auth)
 - pricing page (auth & stripe)
 
 ## Other Tools

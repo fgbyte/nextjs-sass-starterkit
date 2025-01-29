@@ -1,12 +1,22 @@
 "use client";
 
+import {
+	SignInButton,
+	SignUpButton,
+	SignedIn,
+	SignedOut,
+	UserButton,
+	useAuth,
+} from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
+	const { userId } = useAuth();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -58,7 +68,7 @@ export default function Header() {
 						}`}
 					>
 						<div className="flex font-bold flex-col sm:flex-row sm:items-center sm:space-x-8">
-							{["Docs", "Pricing"].map((item) => (
+							{["Pricing"].map((item) => (
 								<Link
 									key={item}
 									href={`/${item.toLowerCase()}`}
@@ -67,6 +77,37 @@ export default function Header() {
 									{item}
 								</Link>
 							))}
+							{/* Auth */}
+							{userId && (
+								<Link
+									href="/dashboard"
+									className="text-sm hover:underline transition-colors py-2 sm:py-0 relative group"
+								>
+									Dashboard
+								</Link>
+							)}
+							<SignedOut>
+								{/* <SignInButton mode="modal">
+									<button
+										type="button"
+										className="text-sm hover:underline transition-colors mt-2 sm:mt-0"
+									>
+										Sign In
+									</button>
+								</SignInButton> */}
+								<SignUpButton mode="modal">
+									<Button>Sign Up</Button>
+								</SignUpButton>
+							</SignedOut>
+							<SignedIn>
+								<UserButton
+									appearance={{
+										elements: {
+											avatarBox: "w-10 h-10",
+										},
+									}}
+								/>
+							</SignedIn>
 						</div>
 					</div>
 				</div>
